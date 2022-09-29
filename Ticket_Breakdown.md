@@ -27,7 +27,6 @@ Solution: We have to add a new column to the join table which contains a new fie
 
 Ticket 1: Create masked_agent_ids table.
 * Implement (versioned) SQL migration script: create a new table with columns: `id (PK)`, `facility_id`, `agent_id` and `masked_agent_id`. Create a multicolumn index on  `facility_id` and `agent_id`.
-* Create a backup of DB.
 * Run migration script.
   DoD: `masked_agent_field` is present in the DB, performance is not degraded, there is no data loss.
   Time estimate: 3 hours
@@ -41,7 +40,7 @@ Ticket 2: Create ORM and repository for `masked_agent_ids` table
 
 Ticket 3: Generate `masked_agent_ids` for legacy entries.
 * Implement migration scripts which generates uuid from `agency_id` and `facility_id`s that where previously in the DB.
-* Create backup of tables.
+* Create backup of DB.
 * Run migration script.
 DoD: Masked agent ids are present in the new table for all agent x facility connection, there is no degradation in the DB while migrating.
 Time estimate: 2 hours
